@@ -1,3 +1,8 @@
+Phase-2-Code Challenge
+This project involves a transaction form, 29/04/2024 By Shadrack Mutai
+
+Project Description; React Bank Transactions App
+
 # Bank of Flatiron
 
 Welcome to the Bank of Flatiron, where you can trust us with all your financial
@@ -133,3 +138,10 @@ Example Response:
 ```json
 {}
 ```
+
+## Support and contact details
+- email :: skmutai6@gmail.com
+- phone :: +254723486218
+
+## License
+*Licenced under the MIT License Copyright (c) 2024 **Shadrack Mutai
