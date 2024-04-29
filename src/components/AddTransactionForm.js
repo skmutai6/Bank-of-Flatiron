@@ -43,10 +43,10 @@ function AddTransactionForm() {
     <div className="ui segment">
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="inline fields">
-          <input type="date" name="date" value={transaction.date} onChange={handleChecked} />
-          <input type="text" name="description" placeholder="Description" value={transaction.description} onChange={handleChecked} />
-          <input type="text" name="category" placeholder="Category" value={transaction.category} onChange={handleChecked} />
-          <input type="number" name="amount" placeholder="Amount" step="0.01" value={transaction.amount} onChange={handleChecked} />
+          <input type="date" name="date" value={transaction.date} onChange={handleChecked} required />
+          <input type="text" name="description" placeholder="Description" value={transaction.description} onChange={handleChecked} required />
+          <input type="text" name="category" placeholder="Category" value={transaction.category} onChange={handleChecked} required />
+          <input type="number" name="amount" placeholder="Amount" step="0.01" value={transaction.amount} onChange={handleChecked} required />
         </div>
         <button className="ui button" type="submit">
           Add Transaction
