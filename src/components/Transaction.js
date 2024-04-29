@@ -1,14 +1,15 @@
 import React from "react";
+import AddTransactionForm from "./AddTransactionForm";
 
-function Transaction() {
+function transactions() {
   return (
     <tr>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
+      <td>{transactions.date}</td>
+      <td>{transactions.description}</td>
+      <td>{transactions.category}</td>
+      <td>{transactions.amount}</td>
     </tr>
   );
 }
 
-export default Transaction;
+export default transactions;
