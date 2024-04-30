@@ -1,43 +1,49 @@
 import React, { useState } from "react";
 
-function AddTransactionForm() {
+function AddTransactionForm( {onAddTrans} ) {
   const [transaction, setTransaction] = useState({
-    date: '',
-    description: '',
-    category: '',
-    amount: '',
+    date: ' ',
+    description: ' ',
+    category: ' ',
+    amount: ' ',
   });
-
-  const handleSubmit = async (event) => {
+  
+  function handleChecked(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setTransaction({ ...transaction, [name]: value });
+  }
+  function handleSubmit(event) {
     event.preventDefault();
+    const formData = {
+      date: transaction.date,
+      description: transaction.description,
+      category: transaction.category,
+      amount: transaction.amount,
+    };
 
-    try {
-      const response = await fetch('http://localhost:8001/transactions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(transaction),
-      });
-      alert("Transaction Added Successfully")
+    // function to fill form input
+    const editFormInputs = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
+    fetch(`http://localhost:8001/transactions`, editFormInputs)
+      .then((res) => res.json())
+      .then((data) => onAddTrans(data));
 
-
-      const data = await response.json();
-      console.log('Transaction added:', data);
-
-    }
-    catch (error) {
-      console.error('Error adding transaction:', error);
-    }
-  };
-
-  const handleChecked = (event) => {
-    const { name, value } = event.target;
+    // Clear form after POST action
     setTransaction({
-      ...transaction,
-      [name]: value,
+      date: ' ',
+      description: ' ',
+      category: ' ',
+      amount: ' ',
     });
-  };
+    alert("Transaction Added Successfully")
+  }
+  
 
   return (
     <div className="ui segment">

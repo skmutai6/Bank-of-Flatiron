@@ -1,5 +1,4 @@
 import React from "react";
-import AddTransactionForm from "./AddTransactionForm";
 
 function transactions() {
   return (
