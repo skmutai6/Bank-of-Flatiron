@@ -44,7 +44,6 @@ function AddTransactionForm( {onAddTrans} ) {
     alert("Transaction Added Successfully")
   }
   
-
   return (
     <div className="ui segment">
       <form className="ui form" onSubmit={handleSubmit}>

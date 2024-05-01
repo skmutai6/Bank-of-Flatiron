@@ -4,11 +4,17 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  function handleSearchChange(searchTerm) {
+    setSearchTerm(searchTerm);
+  }
+
   return (
     <div>
-      <Search />
+      <Search onSearchChange={handleSearchChange} />
       <AddTransactionForm />
-      <TransactionsList />
+      <TransactionsList searchTerm={searchTerm} />
     </div>
   );
 }

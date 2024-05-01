@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function TransactionsList() {
+function TransactionsList({ searchTerm }) {
   const [transactions, setTransactions] = useState([]);
+  const [trans, setTrans] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8001/transactions')
@@ -11,7 +12,7 @@ function TransactionsList() {
       });
   }, []);
 
-  console.log(transactions);
+  // console.log(transactions);
 
   // function to DELETE transaction 
   function handleDelete(id) {
@@ -21,7 +22,21 @@ function TransactionsList() {
     .then(() => {
       setTransactions(transactions.filter(transaction => transaction.id !== id));
     })
+    alert("Transaction Deleted Successfully")
+
   }
+  useEffect(() => {
+    if (searchTerm === "") {
+      setTrans(transactions);
+    } else {
+      const filter = transactions.filter((transaction) =>
+        transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+        // transaction.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setTrans(filter);
+    }
+  }, [searchTerm, transactions]);
+
 
   return (
     <table className="ui celled striped padded table">
@@ -44,7 +59,7 @@ function TransactionsList() {
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
-        {transactions && transactions.map((transaction) => (
+        {trans && trans.map((transaction) => (
           <tr key={transaction.id}>
             <td>
               <p>{transaction.date}</p>
