@@ -30,7 +30,7 @@ function AddTransactionForm( {onAddTrans} ) {
       },
       body: JSON.stringify(formData),
     };
-    fetch(`http://localhost:8001/transactions`, editFormInputs)
+    fetch(`https://bank-of-flatiron-ew2l.onrender.com/transactions`, editFormInputs)
       .then((res) => res.json())
       .then((data) => onAddTrans(data));
 
